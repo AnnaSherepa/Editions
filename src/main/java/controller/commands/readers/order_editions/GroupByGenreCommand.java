@@ -1,4 +1,4 @@
-package controller.commands.readers.orderEditions;
+package controller.commands.readers.order_editions;
 
 import controller.commands.Command;
 import manegers.Path;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class GroupByGenreCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(GroupByGenreCommand.class);

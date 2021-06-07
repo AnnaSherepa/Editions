@@ -7,6 +7,11 @@
 .aside-form .form-control, .aside-form .form-select{
     width: 65%;
 }
+
+#from_add_money form .form-control, #from_add_money .form-select{
+    width: 30%;
+    margin-right: 15px;
+}
 .article div{
     margin-bottom: 10px;
 }

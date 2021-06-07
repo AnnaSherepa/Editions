@@ -1,4 +1,4 @@
-package controller.commands.readers.userCart;
+package controller.commands.readers.user_cart;
 
 import controller.commands.Command;
 import manegers.Path;
@@ -20,8 +20,12 @@ public class RemoveFromCartCommand implements Command {
         HttpSession session = request.getSession();
         int id = Integer.parseInt(request.getParameter("idRemEd"));
         BigDecimal price = BigDecimal.valueOf(Double.parseDouble(request.getParameter("priceEd")));
+        String measEd = request.getParameter("measEd");
 
         ShoppingCart cartList = (ShoppingCart) session.getAttribute("cart");
+        if(measEd.equals("UAH")){
+            price = price.divide(BigDecimal.valueOf(30));
+        }
         cartList.decreaseTotalSum(price);
         cartList.getEditions().removeIf(edition -> edition.getId() == id);
         session.setAttribute("cart", cartList);

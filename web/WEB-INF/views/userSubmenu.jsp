@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page import="manegers.Path" %>
+
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="locales.locale" var="lang"/>
 
@@ -18,19 +19,23 @@
 
                     <a class="nav-link" href="#"  tabindex="-1" aria-disabled="true">
                         <li class="nav-item">
-                            <fmt:message key="user.submenu.myBalance" /> ${user.balance}
+                            <fmt:message key="user.submenu.myBalance" />
+                            <c:choose>
+
+                            <c:when test="${language == 'uk'}">
+                                ${user.balance*30}
+                            </c:when>
+                                <c:otherwise>
+                                    ${user.balance}
+                                </c:otherwise>
+
+                            </c:choose>
+                            <fmt:message key="currency" />
                         </li>
                     </a>
                     <button class="btn btn-outline-success" type="button" id="add_button"
                             onclick="check('add_button', 'from_add_money','none', 'inline-block')"><fmt:message key="user.submenu.addMoney.button" /></button>
-                    <a style = "display: none; "id = "from_add_money"><li>
-                        <form action="${Path.USER_UPDATE_BALANCE}" method="post">
-                            <input type="text" name="newBalance">
-                            <input type="hidden" name="idUser" value="${user.id}">
-                            <button class="btn btn-outline-success" type="submit" ><fmt:message key="user.submenu.addMoney.submit" /></button>
-                            <button class="btn btn-outline-success" type="button" onclick="check('add_button', 'from_add_money', 'inline-block','none')">X</button>
-                        </form>
-                    </li></a>
+
                     <a class="nav-link" href="${Path.MAIN_PAGE}">    <li class="nav-item active">   <fmt:message key="user.submenu.mainPage" /></li></a>
                 </ul>
                 <c:if test="${user.role == 'admin'}">
@@ -39,7 +44,23 @@
                     <a class="nav-link" href="${Path.ADMIN_NEW_EDITION}">   <li class="nav-item active"><fmt:message key="admin.submenu.newEdition" /></li></a>
                 </ul>
                 </c:if>
+
             </div>
+
+        </div>
+        <div style = "display: none;" class="col-6" id = "from_add_money">
+            <form action="${Path.USER_UPDATE_BALANCE}" method="post" class="d-flex flex-row">
+                <input class="col-3 form-control" type="text" name="newBalance" placeholder="Value">
+                <input type="hidden" name="idUser" value="${user.id}">
+                <select class="col-3 form-select" name="measurement" aria-label="Default select example" required>
+                    <option selected disabled>Сurrency</option>
+                    <c:forEach items="${measurements}" var="meas">
+                        <option value="${meas}">${meas}</option>
+                    </c:forEach>
+                </select>
+                <button class="btn btn-outline-success" type="submit" ><fmt:message key="user.submenu.addMoney.submit" /></button>
+                <button class="btn btn-outline-success" type="button" onclick="check('add_button', 'from_add_money', 'inline-block','none')">X</button>
+            </form>
         </div>
     </div>
 </div>

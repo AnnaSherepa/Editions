@@ -1,7 +1,11 @@
 package models.entity;
 
+import manegers.ProjectConstants;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,7 +38,13 @@ public class ShoppingCart implements Serializable {
     }
     public void addEdition(Edition edition){
         editions.add(edition);
-        totalSum = totalSum.add(edition.getPrice());
+        BigDecimal price = edition.getPrice();
+        if (edition.getMeasurement().equals("UAH")){
+            price = price.divide(ProjectConstants.USD_TO_UAH, 6, RoundingMode.HALF_UP);
+        }
+        totalSum = totalSum.add(price);
+        totalSum = totalSum.round(new MathContext(4, RoundingMode.HALF_UP));
+
     }
 
     public void increaseTotalSum(BigDecimal value){
@@ -44,6 +54,7 @@ public class ShoppingCart implements Serializable {
     public void decreaseTotalSum(BigDecimal value){
         totalSum = totalSum.subtract(value);
     }
+
 
     public void clear(){
         editions.clear();

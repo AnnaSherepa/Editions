@@ -1,4 +1,4 @@
-package controller.commands.readers.userCart;
+package controller.commands.readers.user_cart;
 
 import controller.commands.Command;
 import manegers.Path;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -28,6 +27,7 @@ public class AddToCartCommand implements Command {
         if(shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
+
         LOGGER.info("Cart list initialized");
         List<Edition> editions = (List<Edition>) servletContext.getAttribute("allEditions");
         LOGGER.info("All editions is gotten");

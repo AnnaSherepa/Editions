@@ -32,7 +32,21 @@
 
     <c:otherwise>
         <div>
-            Total sum: ${cart.totalSum}
+            Total sum:
+            <c:choose>
+
+                <c:when test="${language == 'uk'}">
+                    ${cart.totalSum*30}
+                </c:when>
+                <c:otherwise>
+                    ${cart.totalSum}
+                </c:otherwise>
+
+            </c:choose>
+            <fmt:message key="currency" />
+
+        </div>
+        <div>
             <a href="${Path.USER_MAKE_ORDER_CART}" class="btn btn-outline-success col-2 d-inline-block">Pay</a>
             <a href="${Path.USER_CLEAR_CART}" class="btn btn-outline-danger col-2 d-inline-block">Clear cart</a>
 
@@ -62,10 +76,10 @@
                             ${edition.descriptionUk}
                     </div>
                     <div class="author">
-                        <b><fmt:message key="admin.form.author"/>:</b> ${edition.author.nameUk}
+                        <strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameUk}
                     </div>
                     <div class="genre">
-                        <b><fmt:message key="admin.form.genre"/>:</b> ${edition.genre.nameUk}
+                        <strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameUk}
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -77,19 +91,43 @@
                             ${edition.descriptionEn}
                     </div>
                     <div class="author">
-                        <b><fmt:message key="admin.form.author"/>:</b> ${edition.author.nameEn}
+                        <strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameEn}
                     </div>
                     <div class="genre">
-                        <b><fmt:message key="admin.form.genre"/>:</b> ${edition.genre.nameEn}
+                        <strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameEn}
                     </div>
                 </c:otherwise>
             </c:choose>
                 </div>
-                <div class="price d-inline-block">
-                        ${edition.price}
-                        ${edition.measurement}
-                <a href="${Path.USER_REMOVE_FROM_CART}&idRemEd=${edition.id}&priceEd=${edition.price}" class="btn btn-outline-danger col-2 d-inline-block">Delete from cart</a>
+                <div class="price">
+                    <fmt:message key="main.price" />
+                    <c:choose>
+                        <c:when test="${language == 'uk'}">
+                            <c:choose>
+                                <c:when test="${edition.measurement == 'UAH'}">
+                                    ${edition.price}
+                                </c:when>
+                                <c:otherwise>
+                                    ${edition.price*30}
+                                </c:otherwise>
+                            </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${edition.measurement == 'UAH'}">
+                                    ${edition.price/30}
+                                </c:when>
+                                <c:otherwise>
+                                    ${edition.price}
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <fmt:message key="currency" />
                 </div>
+
+                <a href="${Path.USER_REMOVE_FROM_CART}&idRemEd=${edition.id}&priceEd=${edition.price}&measEd=${edition.measurement}" class="btn btn-outline-danger col-2 d-inline-block">Delete from cart</a>
             </div>
             <hr>
         </c:forEach>

@@ -3,6 +3,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <%@ page import="manegers.Path" %>
+<%@ page import="manegers.ProjectConstants" %>
 
 <c:set var="page" value="main" scope="request"/>
 <c:set var="showEditions" value="${actualEditions == null ? allEditions : actualEditions}"/>
@@ -108,10 +109,10 @@
                           ${edition.descriptionUk}
                       </div>
                       <div class="author">
-                        <b><fmt:message key="admin.form.author"/>:</b> ${edition.author.nameUk}
+                        <strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameUk}
                       </div>
                       <div class="genre">
-                        <b><fmt:message key="admin.form.genre"/>:</b> ${edition.genre.nameUk}
+                        <strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameUk}
                       </div>
                     </c:when>
                     <c:otherwise>
@@ -123,15 +124,41 @@
                           ${edition.descriptionEn}
                       </div>
                       <div class="author">
-                        <b><fmt:message key="admin.form.author"/>:</b> ${edition.author.nameEn}
+                        <strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameEn}
                       </div>
                       <div class="genre">
-                        <b><fmt:message key="admin.form.genre"/>:</b> ${edition.genre.nameEn}
+                        <strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameEn}
                       </div>
 
                     </c:otherwise>
                   </c:choose>
-                    <div>Price: ${edition.price} ${edition.measurement} </div>
+                    <div class="price">
+                        <fmt:message key="main.price" />
+                        <c:choose>
+                            <c:when test="${language == 'uk'}">
+                                <c:choose>
+                                    <c:when test="${edition.measurement == 'UAH'}">
+                                        ${edition.price}
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${edition.price*30}
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${edition.measurement == 'UAH'}">
+                                        ${edition.price/30}
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${edition.price}
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <fmt:message key="currency" />
+                    </div>
 
                     <div class="row">
                     <form method="post" action="${Path.USER_ADD_TO_CART}" >

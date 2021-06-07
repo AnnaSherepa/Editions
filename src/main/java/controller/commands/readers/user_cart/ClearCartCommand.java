@@ -14,14 +14,13 @@ import java.io.IOException;
 
 public class ClearCartCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(ClearCartCommand.class);
-    private final UserService userService = UserService.getInstance();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
         cart.clear();
         request.getSession().setAttribute("cart", cart);
-        //TODO add message about success operation
+
         return Path.USER_CART_PAGE;
     }
 }

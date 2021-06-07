@@ -20,21 +20,10 @@ public class SearchByTitleCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext context = request.getServletContext();
         HttpSession session = request.getSession();
-        List<Edition> allEditions = (List<Edition>) context.getAttribute("allEditions");
         String searchRequest = request.getParameter("searchRequest");
-
         List<Edition> actual = UserService.getInstance().searchByTitle(searchRequest);
-
-        /*This part does not use connection to db*/
-//        List<Edition> actual = allEditions.stream()
-//                .filter(edition ->  edition.getTitleEn().contains(searchRequest) ||
-//                                    edition.getTitleUk().contains(searchRequest))
-//                .collect(Collectors.toList());
-
         session.setAttribute("actualEditions", actual);
-
         return Path.MAIN_PAGE;
     }
 }

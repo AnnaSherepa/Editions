@@ -22,13 +22,7 @@ public class GroupByGenreCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("Groping editions");
         HttpSession session = request.getSession();
-        ServletContext context = request.getServletContext();
-
-        List<Edition> allEditions = (List<Edition>) context.getAttribute("allEditions");
-
-        Optional<String> language = Optional.ofNullable((String) session.getAttribute("language"));
         Optional<String> groupByGenre = Optional.ofNullable(request.getParameter("groupBy"));
-
 
         if(!groupByGenre.isPresent()){
             session.setAttribute("actualEditions", userService.getAllEditions());
@@ -37,15 +31,6 @@ public class GroupByGenreCommand implements Command {
         }
         int idGenre = Integer.parseInt(groupByGenre.get());
         List<Edition> actual = userService.getEditionsByIdGenre(idGenre);
-
-        /*This part does not use connection to db*/
-//        if(!groupByGenre.isPresent()){
-//            actual = allEditions;
-//        }else if(language.isPresent() && language.get().equals("uk")){
-//            actual = allEditions.stream().filter(edition -> edition.getGenre().getNameUk().equals(groupByGenre.get())).collect(Collectors.toList());
-//        }else {
-//            actual = allEditions.stream().filter(edition -> edition.getGenre().getNameEn().equals(groupByGenre.get())).collect(Collectors.toList());
-//        }
 
         session.setAttribute("actualEditions", actual);
         LOGGER.info("Edition is grouped");

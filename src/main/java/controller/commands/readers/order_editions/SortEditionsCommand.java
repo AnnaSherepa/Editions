@@ -31,46 +31,26 @@ public class SortEditionsCommand implements Command {
         Optional<String> sortBy = Optional.ofNullable(request.getParameter("sortBy"));
 
         if(!sortBy.isPresent()){
-        LOGGER.info("Input is empty");
-            return Path.MAIN_PAGE;
-        }
+            LOGGER.info("Input is empty");
+        }else {
 
-        if(sortBy.get().equals(SORT_BY_PRICE)){
-            actualEditions = userService.orderEditionsByPrice();
-        }else if(sortBy.get().equals(SORT_BY_AUTHOR)){
-            if(language.isPresent() && language.get().equals("uk")){
-                actualEditions = userService.orderEditionsByAuthorNameUk();
-            }else{
-                actualEditions = userService.orderEditionsByAuthorNameEn();
+            if (sortBy.get().equals(SORT_BY_PRICE)) {
+                actualEditions = userService.orderEditionsByPrice();
+            } else if (sortBy.get().equals(SORT_BY_AUTHOR)) {
+                if (language.isPresent() && language.get().equals("uk")) {
+                    actualEditions = userService.orderEditionsByAuthorNameUk();
+                } else {
+                    actualEditions = userService.orderEditionsByAuthorNameEn();
+                }
+            } else if (sortBy.get().equals(SORT_BY_TITLE)) {
+                if (language.isPresent() && language.get().equals("uk")) {
+                    actualEditions = userService.orderEditionsByTitleUk();
+                } else {
+                    actualEditions = userService.orderEditionsByTitleEn();
+                }
             }
-        }else if(sortBy.get().equals(SORT_BY_TITLE)){
-            if(language.isPresent() && language.get().equals("uk")){
-                actualEditions = userService.orderEditionsByTitleUk();
-            }else{
-                actualEditions = userService.orderEditionsByTitleEn();
-            }
-        }
-
-
-        /*This part does not reconnect to DB*/
-//        if(sortBy.get().equals(SORT_BY_PRICE)){
-//            actualEditions.sort(Comparator.comparing(Edition::getPrice));
-//         //   actualEditions.sort((ed1, ed2) -> ed1.getPrice().compareTo(ed2.getPrice()));
-//        }else if(sortBy.get().equals(SORT_BY_AUTHOR)){
-//            if(language.isPresent() && language.get().equals("uk")){
-//                actualEditions.sort(Comparator.comparing(ed -> ed.getAuthor().getNameUk()));
-//            }else{
-//                actualEditions.sort(Comparator.comparing(ed -> ed.getAuthor().getNameEn()));
-//            }
-//        }else if(sortBy.get().equals(SORT_BY_TITLE)){
-//            if(language.isPresent() && language.get().equals("uk")){
-//                actualEditions.sort(Comparator.comparing(Edition::getTitleUk));
-//            }else{
-//                actualEditions.sort(Comparator.comparing(Edition::getTitleEn));
-//            }
-//        }
-
         session.setAttribute("actualEditions", actualEditions);
+        }
         return Path.MAIN_PAGE;
     }
 }

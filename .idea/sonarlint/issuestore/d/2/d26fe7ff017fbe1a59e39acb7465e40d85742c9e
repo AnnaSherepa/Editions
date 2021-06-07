@@ -1,0 +1,31 @@
+
+r
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÎÖ«£üÿÿÿÿ8Íõ±·/
+l
+java:S2095["OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(õ¥Î±8Íõ±·/
+y
+java:S1488u"\Immediately return this expression instead of assigning it to the temporary variable "user".(ó€ğØ8§äµ·/
+R
+java:S1128"0Remove this unused import 'models.entity.Genre'.(ßÎ’ñÿÿÿÿÿ8Ğª™ñš/
+r
+java:S2095ê"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(üäü´úÿÿÿÿ8Ñ¸·/
+r
+java:S2095˜"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÎÖ«£üÿÿÿÿ8Íõ±·/
+W
+java:S1068!":Remove this unused "SQL_SELECT_ALL_BLOCKED" private field.(¡‘çî8Íõ±·/
+q
+java:S2095>"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Æúğ…øÿÿÿÿ8Íõ±·/
+n
+java:S1192¸"KDefine a constant instead of duplicating this literal "End search" 3 times.(ùÁÄ²ûÿÿÿÿ8Œ±¸/
+Q
+java:S1143m"5Remove this return statement from this finally block.(¸®Ã'8Íõ±·/
+R
+java:S1143i"5Remove this return statement from this finally block.(§¼Éç8Íõ±·/
+u
+java:S1192"RDefine a constant instead of duplicating this literal "Start user search" 3 times.(®•ßøıÿÿÿÿ8Œ±¸/
+[
+java:S1068"">Remove this unused "SQL_SELECT_ALL_NON_BLOCKED" private field.(®Êå8Íõ±·/
+m
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Šıä»8È½õ¸/
+Q
+java:S1143O"5Remove this return statement from this finally block.(¸®Ã'8Íõ±·/

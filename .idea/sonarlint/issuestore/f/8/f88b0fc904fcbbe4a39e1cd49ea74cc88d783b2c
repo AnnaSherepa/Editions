@@ -1,0 +1,9 @@
+
+W
+java:S1128":Remove this unused import 'models.dao.interfaces.UserDAO'.(ÕÇğ£8 Ãªéœ/
+k
+java:S1128"IRemove this unused import 'models.dao.mysqlfactotries.EditionDAOFactory'.(”å÷ˆÿÿÿÿÿ8ºö¨¶/
+[
+java:S2168"9Remove this dangerous instance of double-checked locking.(®¿ˆÿÿÿÿÿ8“«»éœ/
+h
+java:S1128"FRemove this unused import 'models.dao.mysqlfactotries.UserDAOFactory'.(²Ğä¼øÿÿÿÿ8ØºÁ¶/

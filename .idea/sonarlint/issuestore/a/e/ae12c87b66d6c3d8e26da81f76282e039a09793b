@@ -1,0 +1,11 @@
+
+M
+java:S6035"0Replace this alternation with a character class.(È†Öñ8Øşíœ/
+G
+java:S5869"*Remove duplicates in this character class.(È†Öñ8Øşíœ/
+G
+java:S5869"*Remove duplicates in this character class.(È†Öñ8Øşíœ/
+n
+java:S5998"LRefactor this repetition that can lead to a stack overflow for large inputs.(¤¯âäøÿÿÿÿ8Øşíœ/
+G
+java:S5869"*Remove duplicates in this character class.(¤Ç›8ô“íœ/

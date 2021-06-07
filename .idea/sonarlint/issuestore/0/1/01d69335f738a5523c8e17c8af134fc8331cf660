@@ -1,0 +1,10 @@
+
+O
+java:S1128"2Remove this unused import 'models.entity.Edition'.(ë”ï‡8ç’Ï¯/
+W	java:S125"<This block of commented-out lines of code should be removed.(™ÒÆ!8İÊĞåœ/
+v
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(í­â8İÊĞåœ/
+Q
+java:S1128"/Remove this unused import 'models.entity.User'.(ØçûÜøÿÿÿÿ8¥…½­/
+J
+java:S11449"-Remove this unused private "initI18N" method.(×ùİ8İÊĞåœ/

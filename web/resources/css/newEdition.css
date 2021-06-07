@@ -1,0 +1,9 @@
+.inputAdmin{
+	margin-bottom: 50px; 
+}
+
+.inputAdmin input, .inputAdmin select, .inputAdmin textarea{
+	padding: 5px 10px;
+	margin-bottom: 15px;
+	margin-right: 15px;
+}

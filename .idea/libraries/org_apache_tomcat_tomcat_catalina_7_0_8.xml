@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="org.apache.tomcat:tomcat-catalina:7.0.8" type="repository">
+    <properties maven-id="org.apache.tomcat:tomcat-catalina:7.0.8" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/7.0.8/tomcat-catalina-7.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.8/tomcat-servlet-api-7.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.8/tomcat-juli-7.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-annotations-api/7.0.8/tomcat-annotations-api-7.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-api/7.0.8/tomcat-api-7.0.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/7.0.8/tomcat-util-7.0.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

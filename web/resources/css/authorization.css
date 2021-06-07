@@ -1,0 +1,35 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+}
+form input{
+    margin: 7px 0;
+}
+.form-group{
+    display: block;
+    width: 40%;
+}
+.form-group .between{
+
+    margin-right: 14px;
+}
+
+.error{
+    color: darkred;
+}
+button[type="submit"]{
+    background: #748D89;
+    display: block;
+    width: 40%;
+    margin: 0;
+    padding:0 auto;
+}
+
+
+@media (max-width: 1200px){
+    button[type="submit"], .form-group{
+        width: 70%;
+    }
+}

@@ -48,7 +48,7 @@ public class AddMoneyCommand implements Command {
         user.setBalance(user.getBalance().add(newBalance));
         if(!error){
             if(!userService.updateBalance(id, newBalance)){
-                LOGGER.info("Something wrong  with db updating");
+                LOGGER.info("Something goes wrong  with db updating");
             }else{
                 request.getSession().setAttribute("user", user);
 

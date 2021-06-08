@@ -4,6 +4,7 @@ import controller.commands.Command;
 import controller.commands.admin.CheckInput;
 import manegers.Messages;
 import manegers.Path;
+import manegers.ProjectConstants;
 import models.entity.Edition;
 import models.entity.User;
 import org.apache.log4j.Logger;
@@ -26,10 +27,12 @@ public class LogInCommand implements Command {
     private CheckInput check = CheckInput.getInstance();
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         LOGGER.info("Log in started");
         String locale = (String) request.getSession().getAttribute("language");
         LOGGER.info("Language: " + locale);
+
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
 
@@ -47,8 +50,9 @@ public class LogInCommand implements Command {
         }
 
         if(error){
-            LOGGER.error("Something goes wrong");
-            return null;
+            LOGGER.info("Something goes wrong");
+            request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+            return ProjectConstants.EMPTY_PAGE;
         }
 
         User user;
@@ -56,13 +60,15 @@ public class LogInCommand implements Command {
             user = service.logIn(login, pass);
             if(!check.checkStatus(user)){
                 request.setAttribute("blockedUserError", Messages.getInstance(locale).getString(Messages.BLOCKED_USER_ERROR));
-                LOGGER.error("User is blocked by admin");
-                return Path.LOG_IN;
+                LOGGER.warn("User is blocked by admin");
+                request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+                return ProjectConstants.EMPTY_PAGE;
             }
         }catch (NoSuchElementException e){
             request.setAttribute("log_inError", Messages.getInstance(locale).getString(Messages.LOG_IN_ERROR));
             LOGGER.error("Incorrect input. Check log and passWord");
-            return Path.LOG_IN;
+            request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+            return ProjectConstants.EMPTY_PAGE;
         }
 
         ServletContext context = request.getServletContext();
@@ -70,7 +76,8 @@ public class LogInCommand implements Command {
         if(loggedUser.contains(user.getId())){
             LOGGER.info("User is already logged in system. Please, log out from another session");
             request.setAttribute("log_inError", Messages.getInstance(locale).getString(Messages.LOG_IN_ERROR));
-            return Path.LOG_IN;
+            request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+            return ProjectConstants.EMPTY_PAGE;
         }
 
         loggedUser.add(user.getId());

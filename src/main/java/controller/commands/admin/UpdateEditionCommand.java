@@ -3,6 +3,7 @@ package controller.commands.admin;
 import controller.commands.Command;
 import manegers.Messages;
 import manegers.Path;
+import manegers.ProjectConstants;
 import models.entity.Edition;
 import org.apache.log4j.Logger;
 import services.AdminService;
@@ -105,11 +106,13 @@ public class UpdateEditionCommand implements Command {
                     request.getServletContext().setAttribute("allEditions", initialService.allListOfEditions());
                     request.getSession().setAttribute("actualEditions", initialService.allListOfEditions());
                     request.setAttribute("editionAddedSuccess", Messages.getInstance(locale).getString(Messages.EDITION_ADDED_SUCCESS));
+                    LOGGER.info("Command finish execution");
                     return Path.MAIN_PAGE;
                 }
             }
 
-            LOGGER.info("Command finish execution");
-            return Path.ADMIN_UPDATE_EDITION_PAGE;
+            request.getSession().setAttribute("pageToForward", Path.ADMIN_UPDATE_EDITION_PAGE);
+            return ProjectConstants.EMPTY_PAGE;
+
     }
 }

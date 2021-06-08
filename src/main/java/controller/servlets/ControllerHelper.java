@@ -63,7 +63,7 @@ public class ControllerHelper {
 
     }
 
-    public Command getCommand(HttpServletRequest request) {
+    public Command getCommand(final HttpServletRequest request) {
         Command command = commands.get(request.getParameter("command"));
         if(command == null){
             throw new NoSuchElementException();

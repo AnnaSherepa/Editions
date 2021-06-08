@@ -24,7 +24,6 @@ public class NewEditionCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("adminPanelGenre", initialService.allListOfGenres());
         request.getSession().setAttribute("adminPanelAuthors", initialService.allListOfAuthors());
-        //request.getSession().setAttribute("measurements", Money.values());
         return Path.ADMIN_NEW_EDITION_PAGE;
     }
 }

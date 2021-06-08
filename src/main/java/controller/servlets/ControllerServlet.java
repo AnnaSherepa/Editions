@@ -2,6 +2,7 @@ package controller.servlets;
 
 import controller.commands.Command;
 import manegers.Path;
+import manegers.ProjectConstants;
 import org.apache.log4j.Logger;
 import services.InitialService;
 
@@ -32,20 +33,18 @@ public class ControllerServlet extends HttpServlet {
         try {
             Command command = controllerHelper.getCommand(request);
             page = command.execute(request, response);
+
         } catch (ServletException | IOException e) {
             LOGGER.error(e.getMessage());
             throw e;
         }
-        if(page!=null) {
+        if(!page.equals(ProjectConstants.EMPTY_PAGE)) {
             response.sendRedirect(page);
-
-        }else{
-            LOGGER.info("URI: " + request.getRequestURL());
-            LOGGER.info("URI: " + request.getPathTranslated());
-            LOGGER.info("URI: " + request.getPathInfo());
-            LOGGER.info("URI: " + Path.LOG_IN);
-//            RequestDispatcher dispatcher = request.getRequestDispatcher(request.getPathTranslated());
-//            dispatcher.forward(request, response);
+        }
+        else{
+            String pageToForward = (String) request.getSession().getAttribute("pageToForward");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pageToForward);
+            dispatcher.forward(request, response);
         }
     }
 

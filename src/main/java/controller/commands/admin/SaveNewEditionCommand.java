@@ -3,6 +3,7 @@ package controller.commands.admin;
 import controller.commands.Command;
 import manegers.Messages;
 import manegers.Path;
+import manegers.ProjectConstants;
 import models.entity.Edition;
 import models.entity.Genre;
 import org.apache.log4j.Logger;
@@ -102,10 +103,12 @@ public class SaveNewEditionCommand implements Command {
                 List<Edition> allEditions = initialService.allListOfEditions();
                 request.getServletContext().setAttribute("allEditions", allEditions);
                 request.setAttribute("editionAddedSuccess", Messages.getInstance(locale).getString(Messages.EDITION_ADDED_SUCCESS));
+                return Path.MAIN_PAGE;
             }
         }
 
-        LOGGER.info("Command finish execution");
-        return Path.ADMIN_NEW_EDITION;
+        request.getSession().setAttribute("pageToForward", Path.ADMIN_NEW_EDITION_PAGE);
+        return ProjectConstants.EMPTY_PAGE;
+
     }
 }

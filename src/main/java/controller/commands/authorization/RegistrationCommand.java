@@ -4,6 +4,7 @@ import controller.commands.Command;
 import controller.commands.admin.CheckInput;
 import manegers.Messages;
 import manegers.Path;
+import manegers.ProjectConstants;
 import services.AuthorizationService;
 
 
@@ -63,11 +64,13 @@ public class RegistrationCommand implements Command {
         }
 
         if(error){
-            page = Path.SIGN_UP;
+            request.getSession().setAttribute("pageToForward", Path.SIGN_UP);
+            page = ProjectConstants.EMPTY_PAGE;
         }else {
             if(!service.signUp(login, password, name, surname, email)){
                 request.setAttribute("signUpError", Messages.getInstance(locale).getString(Messages.SIGN_UP_ERROR));
-                page = Path.SIGN_UP;
+                request.getSession().setAttribute("pageToForward", Path.SIGN_UP);
+                page = ProjectConstants.EMPTY_PAGE;
             }else{
                 page = Path.LOG_IN;
             }

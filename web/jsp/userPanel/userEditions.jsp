@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="manegers.Path" %>
+<%@ taglib uri = "/WEB-INF/tld/custom.tld" prefix = "ct" %>
 
+<%@ page import="manegers.Path" %>
+<c:set var="page" value="${Path.USER_EDITION_PAGE}" scope="request"/>
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
@@ -35,28 +37,25 @@
                 <c:forEach items="${user.editions}" var="edition">
                     <div class="col-12 col-md-2">
                         <div class="article">
-                            <c:choose>
-                                <c:when test="${edition.imgPath == null}">
-                                    <div class="img_article"><img src="../resources/imgs/base_article_img.jpg" alt="article_image"></div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="img_article"><img src="${edition.imgPath}" alt="article_image"></div>
-                                </c:otherwise>
-                            </c:choose>
-                            <c:choose>
-                                <c:when test="${language == 'uk'}">
-                                    <div class="title_article">${edition.titleUk}</div>
-                                    <div class="description">${edition.descriptionUk}</div>
-                                    <div class="author"><strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameUk}</div>
-                                    <div class="genre"><strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameUk}</div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="title_article">${edition.titleEn}</div>
-                                    <div class="description">${edition.descriptionEn}</div>
-                                    <div class="author"><strong><fmt:message key="admin.form.author"/>:</strong> ${edition.author.nameEn}</div>
-                                    <div class="genre"><strong><fmt:message key="admin.form.genre"/>:</strong> ${edition.genre.nameEn}</div>
-                                </c:otherwise>
-                            </c:choose>
+                            <div class="img_article">
+                                <img src="<ct:print-imgPath edition="${edition}"/>" alt="article_image">
+                            </div>
+                            <div class="title_article">
+                                <ct:print-title edition="${edition}" language="${language}"/>
+                            </div>
+                            <div class="description">
+                                <ct:print-description edition="${edition}" language="${language}"/>
+                            </div>
+                            <div class="author">
+                                <strong><fmt:message key="admin.form.author"/>:</strong>
+                                <ct:print-author author="${edition.author}" language="${language}"/>
+                            </div>
+                            <div class="genre">
+                                <strong><fmt:message key="admin.form.genre"/>:</strong>
+                                <ct:print-genre genre="${edition.genre}" language="${language}"/>
+                            </div>
+
+
                             <form action="${Path.USER_DELETE_EDITION_BY_ID}" method="post">
                                 <input type="hidden" name="idEdition" value="${edition.id}">
                                 <button class="btn btn-outline-danger"><fmt:message key="main.admin.delete"/></button>

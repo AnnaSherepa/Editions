@@ -6,7 +6,6 @@ import models.entity.Edition;
 import org.apache.log4j.Logger;
 import services.UserService;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,10 +19,12 @@ public class SearchByTitleCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("Command: search by title is started");
         HttpSession session = request.getSession();
         String searchRequest = request.getParameter("searchRequest");
         List<Edition> actual = UserService.getInstance().searchByTitle(searchRequest);
         session.setAttribute("actualEditions", actual);
+        LOGGER.info("Command: search by title is finished");
         return Path.MAIN_PAGE;
     }
 }

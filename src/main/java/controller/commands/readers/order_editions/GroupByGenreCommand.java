@@ -6,7 +6,6 @@ import models.entity.Edition;
 import org.apache.log4j.Logger;
 import services.UserService;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,13 +25,11 @@ public class GroupByGenreCommand implements Command {
 
         if(!groupByGenre.isPresent()){
             session.setAttribute("actualEditions", userService.getAllEditions());
-            LOGGER.info("Edition is grouped");
-            return Path.MAIN_PAGE;
+        }else {
+            int idGenre = Integer.parseInt(groupByGenre.get());
+            List<Edition> actual = userService.getEditionsByIdGenre(idGenre);
+            session.setAttribute("actualEditions", actual);
         }
-        int idGenre = Integer.parseInt(groupByGenre.get());
-        List<Edition> actual = userService.getEditionsByIdGenre(idGenre);
-
-        session.setAttribute("actualEditions", actual);
         LOGGER.info("Edition is grouped");
         return Path.MAIN_PAGE;
     }

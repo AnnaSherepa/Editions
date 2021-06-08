@@ -1,6 +1,7 @@
 package controller.servlets;
 
 import controller.commands.Command;
+import manegers.Path;
 import org.apache.log4j.Logger;
 import services.InitialService;
 
@@ -37,10 +38,14 @@ public class ControllerServlet extends HttpServlet {
         }
         if(page!=null) {
             response.sendRedirect(page);
-            //RequestDispatcher dispatcher = request.getRequestDispatcher(page);
-            //dispatcher.forward(request, response);
+
         }else{
-            System.out.println("Page is null, not founded");
+            LOGGER.info("URI: " + request.getRequestURL());
+            LOGGER.info("URI: " + request.getPathTranslated());
+            LOGGER.info("URI: " + request.getPathInfo());
+            LOGGER.info("URI: " + Path.LOG_IN);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher(request.getPathTranslated());
+//            dispatcher.forward(request, response);
         }
     }
 

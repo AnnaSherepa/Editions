@@ -2,8 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<c:set var="page" value="logIn" scope="request"/>
+
 <%@ page import="manegers.Path" %>
+<c:set var="page" value="${Path.LOG_IN}" scope="request"/>
 <c:import url="/WEB-INF/views/head.jsp"/>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 

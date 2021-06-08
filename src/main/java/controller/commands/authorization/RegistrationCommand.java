@@ -18,7 +18,7 @@ public class RegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String locale = (String) request.getSession().getAttribute(LOCALE);
+        String locale = (String) request.getSession().getAttribute("language");
 
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");

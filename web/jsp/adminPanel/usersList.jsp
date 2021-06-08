@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page import="manegers.Path" %>
-<c:set var="page" value="userList" scope="request"/>
+<c:set var="page" value="${Path.ADMIN_ALL_USER_PAGE}" scope="request"/>
 <!DOCTYPE html>
 <html>
 <head>

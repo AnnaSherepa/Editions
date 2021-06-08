@@ -17,9 +17,11 @@ public class ClearCartCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        LOGGER.info("Command: clear cart is started");
         ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
         cart.clear();
         request.getSession().setAttribute("cart", cart);
+        LOGGER.info("Command: clear cart is finished");
 
         return Path.USER_CART_PAGE;
     }

@@ -18,8 +18,10 @@
 .price input{
     width: 45%;
 }
+
 .admin-buttons button{
     width: 100%;
+    margin-bottom: 10px;
 }
 .genre ul a{
     text-decoration: none;

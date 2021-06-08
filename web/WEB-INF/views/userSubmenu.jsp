@@ -40,8 +40,16 @@
                 </ul>
                 <c:if test="${user.role == 'admin'}">
                 <ul>
-                    <a class="nav-link" href="${Path.ADMIN_USER_LIST}&page=1">   <li class="nav-item active"><fmt:message key="admin.submenu.users" /></li></a>
-                    <a class="nav-link" href="${Path.ADMIN_NEW_EDITION}">   <li class="nav-item active"><fmt:message key="admin.submenu.newEdition" /></li></a>
+                    <a class="nav-link" href="${Path.ADMIN_USER_LIST}&page=1">
+                        <li class="nav-item active">
+                            <fmt:message key="admin.submenu.users" />
+                        </li>
+                    </a>
+                    <a class="nav-link" href="${Path.ADMIN_NEW_EDITION}">
+                        <li class="nav-item active">
+                            <fmt:message key="admin.submenu.newEdition" />
+                        </li>
+                    </a>
                 </ul>
                 </c:if>
 
@@ -50,10 +58,10 @@
         </div>
         <div style = "display: none;" class="col-6" id = "from_add_money">
             <form action="${Path.USER_UPDATE_BALANCE}" method="post" class="d-flex flex-row">
-                <input class="col-3 form-control" type="text" name="newBalance" placeholder="Value">
+                <input class="col-3 form-control" type="text" name="newBalance" placeholder="<fmt:message key="user.submenu.addMoney.sum" />">
                 <input type="hidden" name="idUser" value="${user.id}">
                 <select class="col-3 form-select" name="measurement" aria-label="Default select example" required>
-                    <option selected disabled>Сurrency</option>
+                    <option selected disabled><fmt:message key="user.submenu.addMoney.currency" /></option>
                     <c:forEach items="${measurements}" var="meas">
                         <option value="${meas}">${meas}</option>
                     </c:forEach>

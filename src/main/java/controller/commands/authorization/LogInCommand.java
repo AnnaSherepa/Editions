@@ -9,6 +9,7 @@ import models.entity.User;
 import org.apache.log4j.Logger;
 import services.AuthorizationService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,8 @@ public class LogInCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("Log in started");
-        ServletContext context = request.getServletContext();
         String locale = (String) request.getSession().getAttribute("language");
+        LOGGER.info("Language: " + locale);
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
 
@@ -40,13 +41,14 @@ public class LogInCommand implements Command {
         }
 
         if(!check.checkPass(pass)){
+            LOGGER.info("Pass Input Error: " + Messages.getInstance(locale).getString(Messages.PASS_INPUT_ERROR));
             request.setAttribute("passInputError", Messages.getInstance(locale).getString(Messages.PASS_INPUT_ERROR));
             error = true;
         }
 
         if(error){
             LOGGER.error("Something goes wrong");
-            return Path.LOG_IN;
+            return null;
         }
 
         User user;
@@ -62,12 +64,15 @@ public class LogInCommand implements Command {
             LOGGER.error("Incorrect input. Check log and passWord");
             return Path.LOG_IN;
         }
+
+        ServletContext context = request.getServletContext();
         Set<Integer> loggedUser = (Set<Integer>) context.getAttribute("loggedUser");
         if(loggedUser.contains(user.getId())){
             LOGGER.info("User is already logged in system. Please, log out from another session");
             request.setAttribute("log_inError", Messages.getInstance(locale).getString(Messages.LOG_IN_ERROR));
             return Path.LOG_IN;
         }
+
         loggedUser.add(user.getId());
         context.setAttribute("loggedUser", loggedUser);
         request.getSession().setAttribute("user",user);

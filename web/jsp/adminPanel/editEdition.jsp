@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@page import="manegers.Path" %>
+<%@page import="models.enums.Money" %>
 <c:set var="page" value="${Path.ADMIN_UPDATE_EDITION_PAGE}" scope="request"/>
 <!DOCTYPE html>
 <html>
@@ -91,7 +92,7 @@
                                placeholder="<fmt:message key="admin.form.price" />">
                         <select class="form-select" name="measurement" aria-label="Default select example" required>
                             <option selected disabled><fmt:message key="admin.form.measurement" /></option>
-                            <c:forEach items="${measurements}" var="meas">
+                            <c:forEach items="${Money.values()}" var="meas">
                                 <option value="${meas}"
                                         <c:if test="${meas == editedEdition.measurement}">selected</c:if>>
                                         ${meas}

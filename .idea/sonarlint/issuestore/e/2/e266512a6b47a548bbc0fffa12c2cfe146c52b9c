@@ -1,6 +1,0 @@
-
-G
-java:S1068"*Remove this unused "LOGGER" private field.(óÑÀ8œù”/
-d
-java:S2441"BMake "ShoppingCart" serializable or don't store it in the session.(üÎ¨‘ÿÿÿÿÿ8Ñ©Á•/
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ÿ¶À<

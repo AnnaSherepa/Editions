@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="page" value="adminForm" scope="request"/>
 <%@page import="manegers.Path" %>
+<%@page import="models.enums.Money" %>
 <c:set var="page" value="${Path.ADMIN_NEW_EDITION_PAGE}" scope="request"/>
 <!DOCTYPE html>
 <html>
@@ -84,14 +85,15 @@
                         <input type="text" name="price" placeholder="<fmt:message key="admin.form.price"/>">
                         <select class="form-select" name="measurement" aria-label="Default select example" required>
                             <option selected disabled><fmt:message key="admin.form.measurement"/></option>
-                            <c:forEach items="${measurements}" var="meas">
+                            <c:forEach items="${ Money.values()}" var="meas">
                                 <option value="${meas}">${meas}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <small class="ui-state-error-text">${priceError}</small>
                     <small class="ui-state-error-text">${addingEditionError}</small>
-                    <button type="submit" class="btn btn-outline-success d-inline-block"><fmt:message key="admin.form.saveEdition"/></button>
+                    <button type="submit" class="btn btn-outline-success d-inline-block">
+                        <fmt:message key="admin.form.saveEdition"/></button>
                 </form>
             </div>
 

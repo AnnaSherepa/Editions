@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page import="manegers.Path" %>
+<%@ page import="models.enums.Money" %>
 
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="locales.locale" var="lang"/>
@@ -34,9 +35,11 @@
                         </li>
                     </a>
                     <button class="btn btn-outline-success" type="button" id="add_button"
-                            onclick="check('add_button', 'from_add_money','none', 'inline-block')"><fmt:message key="user.submenu.addMoney.button" /></button>
+                            onclick="check('add_button', 'from_add_money','none', 'inline-block')">
+                        <fmt:message key="user.submenu.addMoney.button" /></button>
 
-                    <a class="nav-link" href="${Path.MAIN_PAGE}">    <li class="nav-item active">   <fmt:message key="user.submenu.mainPage" /></li></a>
+                    <a class="nav-link" href="${Path.MAIN_PAGE}">    <li class="nav-item active">
+                        <fmt:message key="user.submenu.mainPage" /></li></a>
                 </ul>
                 <c:if test="${user.role == 'admin'}">
                 <ul>
@@ -62,7 +65,7 @@
                 <input type="hidden" name="idUser" value="${user.id}">
                 <select class="col-3 form-select" name="measurement" aria-label="Default select example" required>
                     <option selected disabled><fmt:message key="user.submenu.addMoney.currency" /></option>
-                    <c:forEach items="${measurements}" var="meas">
+                    <c:forEach items="${Money.values()}" var="meas">
                         <option value="${meas}">${meas}</option>
                     </c:forEach>
                 </select>

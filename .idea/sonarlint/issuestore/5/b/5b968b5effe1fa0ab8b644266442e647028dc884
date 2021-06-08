@@ -1,12 +1,12 @@
 
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(øƒ¢ûÿÿÿÿ8ÛéüÀš/
 …
 java:S19891"hHandle the following exceptions that could be thrown by "processRequest": ServletException, IOException.(‘ŸÑ8ÛéüÀš/
 u
 java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(úÏª©8ØŸ«ô›/
 …
 java:S19897"hHandle the following exceptions that could be thrown by "processRequest": ServletException, IOException.(‘ŸÑ8ÛéüÀš/
-X	java:S125("<This block of commented-out lines of code should be removed.(ÜÃ˜é8ÎĞíòœ/
 z
 java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(§ÖÚ‰ÿÿÿÿÿ8ÛéüÀš/
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(øƒ¢ûÿÿÿÿ8ÛéüÀš/
+X	java:S125("<This block of commented-out lines of code should be removed.(ÜÃ˜é8ÎĞíòœ/

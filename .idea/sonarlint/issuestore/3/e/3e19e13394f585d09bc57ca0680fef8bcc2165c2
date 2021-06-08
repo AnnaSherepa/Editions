@@ -1,6 +1,0 @@
-
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ÿ¶À<
-M
-java:S1128"1Remove this unused import 'java.util.LinkedList'.(»Äð18Õß»•/
-^
-java:S2441("BMake "ShoppingCart" serializable or don't store it in the session.(­Ôß8¨¢¾•/

@@ -18,20 +18,13 @@ public class NewEditionCommand implements Command {
     @Override
     /**
      * Add static genre,
-    import measurement,
-    import authors,
-    setLocale for messages*/
+    import authors
+   */
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Genre> genres = initialService.allListOfGenres();
-        for (Genre genre: genres) {
-            System.out.println(genre);
-
-        }
-        request.getSession().setAttribute("adminPanelGenre",genres);
-
+        request.getSession().setAttribute("adminPanelGenre", initialService.allListOfGenres());
         request.getSession().setAttribute("adminPanelAuthors", initialService.allListOfAuthors());
-        request.getSession().setAttribute("measurements", Money.values());
+        //request.getSession().setAttribute("measurements", Money.values());
         return Path.ADMIN_NEW_EDITION_PAGE;
     }
 }

@@ -1,6 +1,6 @@
 
-Y
-java:S1128"7Remove this unused import 'models.entity.ShoppingCart'.(‰ôßßúÿÿÿÿ8µæŠ´/
 U
 java:S3516"9Refactor this method to not always return the same value.(ğ·¸8í§´/
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÜÂ¶ùÿÿÿÿ
+Y
+java:S1128"7Remove this unused import 'models.entity.ShoppingCart'.(‰ôßßúÿÿÿÿ8µæŠ´/

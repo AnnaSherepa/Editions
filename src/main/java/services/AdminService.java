@@ -1,5 +1,6 @@
 package services;
 
+import models.dao.factory.DAOFactory;
 import models.dao.mysqlfactotries.AuthorDAOFactory;
 import models.dao.mysqlfactotries.EditionDAOFactory;
 import models.dao.mysqlfactotries.GenreDAOFactory;
@@ -25,33 +26,38 @@ public class AdminService {
         }
         return instance;
     }
+    private DAOFactory mySQLDAOFactory = DAOFactory.getMySQLDAOFactory();
 
     public boolean updateUserStatus(int id, int newStatus){
-        return UserDAOFactory.getInstance().updateStatus(id, newStatus);
+        return mySQLDAOFactory.getUserDAO().updateStatus(id, newStatus);
     }
 
     public List<User> getAllUsers(int size, int from){
-        return UserDAOFactory.getInstance().findAllUsersWithoutEditions(size, from);
+        return mySQLDAOFactory.getUserDAO().findAllUsersWithoutEditions(size, from);
     }
 
 
     public boolean addNewGenre(Genre genre){
-        return GenreDAOFactory.getInstance().insert(genre);
+        return mySQLDAOFactory.getGenreDAO().insert(genre);
     }
 
     public boolean addNewAuthor(Author author){
-        return AuthorDAOFactory.getInstance().insert(author);
+        return mySQLDAOFactory.getAuthorDAO().insert(author);
     }
 
     public boolean addNewEdition(Edition edition){
-        return EditionDAOFactory.getInstance().insert(edition);
+        return mySQLDAOFactory.getEditionDAO().insert(edition);
     }
+
     public boolean deleteEditionById(int id){
-        return EditionDAOFactory.getInstance().deleteById(id);
+        return mySQLDAOFactory.getEditionDAO().deleteById(id);
     }
 
     public boolean updateEdition(Edition edition){
-        return EditionDAOFactory.getInstance().update(edition);
+        return mySQLDAOFactory.getEditionDAO().update(edition);
     }
-    public int getSizeTableUsers(){return UserDAOFactory.getInstance().tableSize();}
+
+    public int getSizeTableUsers(){
+        return mySQLDAOFactory.getUserDAO().tableSize();
+    }
 }

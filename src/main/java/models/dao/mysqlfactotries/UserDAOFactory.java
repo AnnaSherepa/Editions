@@ -114,7 +114,7 @@ public class UserDAOFactory implements UserDAO {
 
     static User extractFromResultSet(ResultSet rs) throws SQLException {
 
-        User user = new User.Builder().setId(rs.getInt("idUser"))
+        return new User.Builder().setId(rs.getInt("idUser"))
                 .setLogin(rs.getNString("login"))
                 .setEmail(rs.getNString("email"))
                 .setPass(rs.getNString("pass"))
@@ -124,8 +124,6 @@ public class UserDAOFactory implements UserDAO {
                 .setBalance(rs.getBigDecimal("balance"))
                 .setStatus(rs.getInt("status"))
                 .build();
-
-        return user;
     }
 
     private User makeUniqueUser(Map<Integer, User> uniqueUser, User user){
@@ -229,9 +227,7 @@ public class UserDAOFactory implements UserDAO {
             statement.setString(5, user.getEmail());
             statement.setBigDecimal(6, BigDecimal.ZERO);
             statement.setString(7, Role.USER.getRole());
-            //I will create and insert users only once, in time of creation.
-            // The next time I have just to update fields
-
+            
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Creating user failed, no rows affected.");

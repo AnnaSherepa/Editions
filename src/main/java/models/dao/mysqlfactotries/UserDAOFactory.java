@@ -3,7 +3,6 @@ package models.dao.mysqlfactotries;
 import models.dao.factory.Connector;
 import models.dao.interfaces.UserDAO;
 import models.entity.Edition;
-import models.entity.Genre;
 import models.entity.User;
 import models.enums.Role;
 import org.apache.log4j.Logger;
@@ -30,8 +29,7 @@ public class UserDAOFactory implements UserDAO {
     private static final String SQL_DELETE_USER_EDITION_BY_ID = "DELETE FROM users_editions WHERE userId = ? AND editionId = ?";
 
     private static final String SQL_SELECT_ALL_USERS_BY_USER_ROLE = SQL_SELECT_ALL_USERS  + " WHERE role = 'user'";
-    private static final String SQL_SELECT_ALL_BLOCKED = SQL_SELECT_ALL_USERS  + " AND status = 1 ";
-    private static final String SQL_SELECT_ALL_NON_BLOCKED = SQL_SELECT_ALL_USERS  + " AND status = 0 ";
+
     private static final String SQL_SELECT_USER_BY_ID = SQL_SELECT_ALL_USERS + "WHERE idUser = ?";
     private static final String SQL_SELECT_USER_BY_LOGIN = SQL_SELECT_ALL_USERS + "WHERE login = ?";
     private static final String SQL_INSERT_USER = "INSERT INTO finalproject.users(login, pass, name, surname, email, balance, role)  " +
@@ -227,7 +225,7 @@ public class UserDAOFactory implements UserDAO {
             statement.setString(5, user.getEmail());
             statement.setBigDecimal(6, BigDecimal.ZERO);
             statement.setString(7, Role.USER.getRole());
-            
+
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Creating user failed, no rows affected.");

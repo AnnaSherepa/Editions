@@ -64,16 +64,53 @@ public interface EditionDAO {
     /**
      * Method return list of editions by selected id genre
      *
-     * @param id_genre - id of genre
+     * @param idGenre - id of genre
      * @return List/<Edition/>
      * */
-    List<Edition> findAllEditionByGenreId(int id_genre);
+    List<Edition> findAllEditionByGenreId(int idGenre);
 
 
+    /**
+     * Method return list of editions ordered by price
+     *
+     * @return List/<Edition/>
+     **/
     List<Edition> findAllEditionOrderByPrice();
+
+    /**
+     * Method return list of editions ordered by author name in uk
+     *
+     * @return List/<Edition/>
+     **/
     List<Edition> findAllEditionOrderByAuthorNameUk();
+
+    /**
+     * Method return list of editions ordered by author name in en
+     *
+     * @return List/<Edition/>
+     **/
     List<Edition> findAllEditionOrderByAuthorNameEn();
+
+    /**
+     * Method return list of editions ordered by edition title in en
+     *
+     * @return List/<Edition/>
+     **/
     List<Edition> findAllEditionOrderByTitleEn();
+
+    /**
+     * Method return list of editions ordered by edition title in uk
+     *
+     * @return List/<Edition/>
+     **/
     List<Edition> findAllEditionOrderByTitleUk();
+
+    /**
+     * Method return list of editions where title has a part, given in title parameter.
+     * Search in title uk and title en
+     *
+     * @param title - part which will be searched
+     * @return List/<Edition/>
+     **/
     List<Edition> searchByTitle(String title);
 }

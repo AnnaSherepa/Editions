@@ -35,13 +35,13 @@ public class UpdateEditionCommand implements Command {
 
     private AdminService adminService = AdminService.getInstance();
     private InitialService initialService = InitialService.getInstance();
-    private static final Logger LOGGER = Logger.getLogger(SaveNewEditionCommand.class);
+    private static final Logger LOGGER = Logger.getLogger(UpdateEditionCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("Command start execution");
         String locale = (String) request.getSession().getAttribute("language");
-        String page = null;
+
         boolean error = false;
         int id = Integer.parseInt(request.getParameter(ID));
         LOGGER.info("\n\n\n id: " + id + "\n\n\n");

@@ -12,9 +12,9 @@ public class CheckInput {
         return instance;
     }
 
-    private static final String VALID_NAME_UK = "(?ui)[а-яіїюя '-]+";
+    private static final String VALID_NAME_UK = "(?ui)[а-яії '-]+";
     private static final String VALID_NAME_EN = "(?ui)[a-z- ]+";
-    private static final String VALID_PERSONAL_DATA = "([A-Z]|[А-ЯІЇЄЮ])(?ui)[a-zа-яіїюя-]+";
+    private static final String VALID_PERSONAL_DATA = "([A-Z]|[А-ЯІЇЄ])(?ui)[a-zа-яії-]+";
     private static final String VALID_EMAIL = "[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}";
     private static final String VALID_PASS = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}";
     private static final String VALID_LOGIN = "(?=.*[A-Za-z\\d])[A-Za-z]+";

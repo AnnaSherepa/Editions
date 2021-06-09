@@ -1,10 +1,8 @@
 package controller.servlets;
 
 import controller.commands.Command;
-import manegers.Path;
 import manegers.ProjectConstants;
 import org.apache.log4j.Logger;
-import services.InitialService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -17,9 +15,9 @@ import java.io.IOException;
 
 
 public class ControllerServlet extends HttpServlet {
-    private final static Logger LOGGER = Logger.getLogger(ControllerServlet.class);
-    ControllerHelper controllerHelper = ControllerHelper.getInstance();
-    InitialService initialService = InitialService.getInstance();
+    private static final Logger LOGGER = Logger.getLogger(ControllerServlet.class);
+    private static ControllerHelper controllerHelper = ControllerHelper.getInstance();
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);

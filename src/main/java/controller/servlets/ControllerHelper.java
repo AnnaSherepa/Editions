@@ -14,7 +14,7 @@ import controller.commands.readers.user_cart.AddToCartCommand;
 import controller.commands.readers.user_cart.ClearCartCommand;
 import controller.commands.readers.user_cart.MakeOrderCommand;
 import controller.commands.readers.user_cart.RemoveFromCartCommand;
-import controller.commands.readers.userEditions.DeleteFromUserEditions;
+import controller.commands.readers.user_editions.DeleteFromUserEditions;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

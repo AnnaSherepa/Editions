@@ -1,6 +1,7 @@
 package manegers;
 
 public class Path {
+    private Path(){}
     //main paths
     public static final String SIGN_UP = "/signUp";
     public static final String LOG_IN = "/logIn";
@@ -11,16 +12,6 @@ public class Path {
 
     public static final String USER_EDITION_PAGE = "/userEditions";
     public static final String USER_CART_PAGE = "/userCart";
-
-    //path for admin panel
-    //public static final String ADMIN_ALL_USER_PAGE = "/WEB-INF/views/adminPanel/usersList.jsp";
-    //public static final String ADMIN_ALL_USER_PAGE = "/usersList";
-    //public static final String ADMIN_NEW_EDITION_PAGE = "/WEB-INF/views/adminPanel/newEdition.jsp";
-    //public static final String ADMIN_UPDATE_EDITION_PAGE = "/WEB-INF/views/adminPanel/editEdition.jsp";
-
-//    //path for user panel
-//    public static final String USER_EDITION_PAGE = "/WEB-INF/views/userPanel/userEdition.jsp";
-//    public static final String USER_BASKET_PAGE = "/WEB-INF/views/userPanel/userCart.jsp";
 
     //commands
     public static final String ADMIN_USER_LIST = "/Controller?command=usersList";

@@ -10,13 +10,11 @@ import models.entity.User;
 import org.apache.log4j.Logger;
 import services.AuthorizationService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -25,7 +23,7 @@ public class LogInCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(LogInCommand.class);
     private AuthorizationService service = AuthorizationService.getInstance();
     private CheckInput check = CheckInput.getInstance();
-
+    private static final String PAGE_TO_FORWARD = "pageToForward";
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,7 +49,7 @@ public class LogInCommand implements Command {
 
         if(error){
             LOGGER.info("Something goes wrong");
-            request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+            request.getSession().setAttribute(PAGE_TO_FORWARD, Path.LOG_IN);
             return ProjectConstants.EMPTY_PAGE;
         }
 
@@ -61,13 +59,13 @@ public class LogInCommand implements Command {
             if(!check.checkStatus(user)){
                 request.setAttribute("blockedUserError", Messages.getInstance(locale).getString(Messages.BLOCKED_USER_ERROR));
                 LOGGER.warn("User is blocked by admin");
-                request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+                request.getSession().setAttribute(PAGE_TO_FORWARD, Path.LOG_IN);
                 return ProjectConstants.EMPTY_PAGE;
             }
         }catch (NoSuchElementException e){
             request.setAttribute("log_inError", Messages.getInstance(locale).getString(Messages.LOG_IN_ERROR));
             LOGGER.error("Incorrect input. Check log and passWord");
-            request.getSession().setAttribute("pageToForward", Path.LOG_IN);
+            request.getSession().setAttribute(PAGE_TO_FORWARD, Path.LOG_IN);
             return ProjectConstants.EMPTY_PAGE;
         }
 

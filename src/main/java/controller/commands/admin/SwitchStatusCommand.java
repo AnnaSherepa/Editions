@@ -1,7 +1,6 @@
 package controller.commands.admin;
 
 import controller.commands.Command;
-import manegers.Path;
 import services.AdminService;
 
 import javax.servlet.ServletException;

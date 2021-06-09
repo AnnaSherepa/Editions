@@ -2,15 +2,12 @@ package controller.commands.admin;
 
 import controller.commands.Command;
 import manegers.Path;
-import models.entity.Genre;
-import models.enums.Money;
 import services.InitialService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class NewEditionCommand implements Command {
 

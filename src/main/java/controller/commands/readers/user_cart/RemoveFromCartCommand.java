@@ -4,7 +4,6 @@ import controller.commands.Command;
 import manegers.Path;
 
 import models.entity.ShoppingCart;
-import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class RemoveFromCartCommand implements Command {
-    private static final Logger LOGGER = Logger.getLogger(RemoveFromCartCommand.class);
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

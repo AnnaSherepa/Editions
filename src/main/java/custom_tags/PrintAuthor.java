@@ -9,8 +9,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
 public class PrintAuthor extends TagSupport {
-    private final Logger logger = Logger.getLogger(PrintAuthor.class);
-    private final String langUk = "uk";
+    private static final Logger LOGGER = Logger.getLogger(PrintAuthor.class);
+    private static final String LANG_UK = "uk";
 
     private Author author;
     private String language;
@@ -27,13 +27,13 @@ public class PrintAuthor extends TagSupport {
     public int doStartTag() throws JspException {
         JspWriter out = pageContext.getOut();
         try {
-            if (language != null && language.equals(langUk)) {
+            if (language != null && language.equals(LANG_UK)) {
                 out.print(author.getNameUk());
             } else {
                 out.print(author.getNameEn());
             }
         }catch (IOException e) {
-            logger.error(e);
+            LOGGER.error(e);
         }
         return super.doStartTag();
     }

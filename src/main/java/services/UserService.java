@@ -1,9 +1,6 @@
 package services;
 
 import models.dao.factory.DAOFactory;
-import models.dao.interfaces.UserDAO;
-import models.dao.mysqlfactotries.EditionDAOFactory;
-import models.dao.mysqlfactotries.UserDAOFactory;
 import models.entity.Edition;
 import models.entity.User;
 

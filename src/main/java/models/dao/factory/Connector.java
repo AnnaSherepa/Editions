@@ -7,15 +7,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.Properties;
 
 
 
 public class Connector {
-    private static final String URL_PATH = "jdbc:mysql://localhost:3307/finalProject?useSSL=false&useUnicode=true&serverTimezone=UTC";
     private static final Logger LOGGER = Logger.getLogger(Connector.class);
     private Connector() {}
-    private static volatile Connector db;
+    private static Connector db;
 
     public static synchronized  Connector getInstance() {
         if (db == null) {

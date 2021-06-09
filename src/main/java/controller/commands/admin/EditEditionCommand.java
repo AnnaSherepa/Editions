@@ -20,9 +20,9 @@ public class EditEditionCommand implements Command {
         request.getSession().setAttribute("adminPanelAuthors", initialService.allListOfAuthors());
         List<Edition> editions = (List<Edition>) request.getServletContext().getAttribute("allEditions");
         int idEdition = Integer.parseInt(request.getParameter("editedIdEdition"));
-        //System.out.println("Id edition: " + idEdition);
+
         Edition edition = editions.stream().filter(edition1 -> idEdition == edition1.getId()).findAny().orElse(null);
-        //System.out.println(edition);
+
         request.getSession().setAttribute("editedEdition", edition);
         request.getSession().setAttribute("measurements", Money.values());
         return Path.ADMIN_UPDATE_EDITION_PAGE;

@@ -3,6 +3,7 @@ package manegers;
 import java.util.ResourceBundle;
 
 public class Messages {
+    private Messages(){}
     private static final String BUNDLE_NAME = "locales.locale";
     private static final String EN = "en";
     private static final String UK  ="uk";

@@ -1,8 +1,7 @@
-package controller.commands.readers.userEditions;
+package controller.commands.readers.user_editions;
 
 import controller.commands.Command;
 import manegers.Path;
-import models.entity.ShoppingCart;
 import models.entity.User;
 import org.apache.log4j.Logger;
 import services.UserService;
@@ -25,11 +24,10 @@ public class DeleteFromUserEditions implements Command {
 
         if(!userService.deleteUserEditionById(user.getId(), idEdition)){
             LOGGER.info("Error with DB");
-            return Path.USER_EDITION_PAGE;
+        }else{
+            session.setAttribute("user", userService.getUpdatedUser(user.getId()));
+            LOGGER.info("Edition was deleted");
         }
-
-        session.setAttribute("user", userService.getUpdatedUser(user.getId()));
-        LOGGER.info("Edition was deleted");
         return Path.USER_EDITION_PAGE;
     }
 }

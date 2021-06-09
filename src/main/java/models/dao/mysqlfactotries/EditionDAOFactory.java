@@ -238,8 +238,8 @@ public class EditionDAOFactory implements EditionDAO {
     }
 
     @Override
-    public List<Edition> findAllEditionByGenreId(int id_genre) {
-        return find(SQL_SELECT_EDITION_BY_ID_GENRE, id_genre, null);
+    public List<Edition> findAllEditionByGenreId(int idGenre) {
+        return find(SQL_SELECT_EDITION_BY_ID_GENRE, idGenre, null);
     }
 
     @Override

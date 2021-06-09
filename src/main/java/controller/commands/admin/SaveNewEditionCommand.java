@@ -5,7 +5,6 @@ import manegers.Messages;
 import manegers.Path;
 import manegers.ProjectConstants;
 import models.entity.Edition;
-import models.entity.Genre;
 import org.apache.log4j.Logger;
 import services.AdminService;
 import services.InitialService;
@@ -43,7 +42,7 @@ public class SaveNewEditionCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("Command start execution");
         String locale = (String) request.getSession().getAttribute(LOCALE);
-        String page = null;
+
         boolean error = false;
         String titleUk = request.getParameter(TITLE_UK);
         String titleEn = request.getParameter(TITLE_EN);

@@ -30,7 +30,7 @@ public class SaveNewGenreCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.info("Command start execution");
         String locale = (String) request.getSession().getAttribute(LOCALE);
-        String page = null;
+
         String nameUk = request.getParameter(NAME_UK);
         String nameEn = request.getParameter(NAME_EN);
         boolean error = false;

@@ -5,7 +5,6 @@ import manegers.Path;
 
 import models.entity.ShoppingCart;
 import org.apache.log4j.Logger;
-import services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

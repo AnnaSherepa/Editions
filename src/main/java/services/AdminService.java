@@ -1,10 +1,6 @@
 package services;
 
 import models.dao.factory.DAOFactory;
-import models.dao.mysqlfactotries.AuthorDAOFactory;
-import models.dao.mysqlfactotries.EditionDAOFactory;
-import models.dao.mysqlfactotries.GenreDAOFactory;
-import models.dao.mysqlfactotries.UserDAOFactory;
 import models.entity.Author;
 import models.entity.Edition;
 import models.entity.Genre;
